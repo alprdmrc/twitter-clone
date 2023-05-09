@@ -9,9 +9,27 @@ exports.seed = async function (knex) {
   await knex("Tweets").truncate();
   await knex("Users").truncate();
   await knex("Users").insert([
-    { user_id: 1, name: "Alper", email: "alper@gmail.com", password: "1234" },
-    { user_id: 2, name: "Umut", email: "umut@gmail.com", password: "1234" },
-    { user_id: 3, name: "Doruk", email: "doruk@gmail.com", password: "1234" },
+    {
+      user_id: 1,
+      name: "Alper",
+      email: "alper@gmail.com",
+      password: "$2a$10$H4s.fQqTdOpoGgcS9Kqew.jJ14l2wQ1lxRBR4/GTVckj1Sm7MkV22",
+      role: "Admin",
+    },
+    {
+      user_id: 2,
+      name: "Umut",
+      email: "umut@gmail.com",
+      password: "$2a$10$H4s.fQqTdOpoGgcS9Kqew.jJ14l2wQ1lxRBR4/GTVckj1Sm7MkV22",
+      role: "Prime_User",
+    },
+    {
+      user_id: 3,
+      name: "Doruk",
+      email: "doruk@gmail.com",
+      password: "$2a$10$H4s.fQqTdOpoGgcS9Kqew.jJ14l2wQ1lxRBR4/GTVckj1Sm7MkV22",
+      role: "User",
+    },
   ]);
   await knex("Tweets").insert([
     {

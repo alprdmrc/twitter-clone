@@ -9,7 +9,12 @@ exports.up = function (knex) {
       tbl.string("name").notNullable();
       tbl.string("email").unique().notNullable();
       tbl.string("password").notNullable();
-      tbl.timestamps({ useCamelCase: true });
+      tbl.string("role").notNullable();
+      tbl.timestamps({
+        useCamelCase: true,
+        defaultToNow: true,
+        useTimestamps: true,
+      });
     })
     .createTable("Tweets", (tbl) => {
       tbl.increments("tweet_id");
@@ -22,7 +27,12 @@ exports.up = function (knex) {
         .onDelete("RESTRICT");
       tbl.string("message", 128).notNullable();
       tbl.bigInteger("favorite_cnt");
-      tbl.timestamps({ useCamelCase: true });
+      tbl.date("deletedAt");
+      tbl.timestamps({
+        useCamelCase: true,
+        defaultToNow: true,
+        useTimestamps: true,
+      });
     })
     .createTable("Followers", (tbl) => {
       tbl
@@ -40,7 +50,11 @@ exports.up = function (knex) {
         .onUpdate("RESTRICT")
         .onDelete("RESTRICT");
       tbl.primary(["follower_id", "followee_id"]);
-      tbl.timestamps({ useCamelCase: true });
+      tbl.timestamps({
+        useCamelCase: true,
+        defaultToNow: true,
+        useTimestamps: true,
+      });
     })
     .createTable("Comments", (tbl) => {
       tbl.increments("comment_id");
@@ -59,7 +73,11 @@ exports.up = function (knex) {
         .onDelete("RESTRICT")
         .onUpdate("RESTRICT");
       tbl.string("reply", 128).notNullable();
-      tbl.timestamps({ useCamelCase: true });
+      tbl.timestamps({
+        useCamelCase: true,
+        defaultToNow: true,
+        useTimestamps: true,
+      });
     });
 };
 
